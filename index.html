@@ -1,8 +1,12 @@
-<!doctype html>
+   <!doctype html>
 <html lang="en"> 
  <head> 
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta name="description" content="Free Resume Maker, Make Your Professional Resume Easily With Our Form Based Interface.
+  No Data is Saved In Our Server.">
+  <meta name="keywords" content="Online Resume Maker,Professional Resume Maker,Resume Builder,Job Resume Maker,Resume Maker,
+  Free Online Resume Maker, ATS Resume Maker,Resume Template,Ease My Resume">
   <title>Free Resume Maker</title> 
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"> 
   <style>
@@ -74,10 +78,10 @@
       font-style: italic;
     }
 
-    /* SUMMARY/OBJECTIVE: now spans full width and larger */
+    
     .resume-summary {
-      font-size: 1.3em;               /* increased font size */
-      margin: 0 -30px 5px -30px;      /* spans full container width */
+      font-size: 1.3em;                
+      margin: 0 -30px 5px -30px;      
       line-height: 1.4;
       text-align: left;
       display: inline-blocks;
@@ -131,7 +135,7 @@
  <body> <!-- LOADER --> 
   <div id="loader"> 
    <div class="loader-text">
-     MAKE YOUR RESUME 
+     MAKE YOUR RESUME
    </div> 
    <div class="loader-bar"> 
     <div class="loader-progress"></div> 
@@ -139,7 +143,7 @@
   </div> <!-- NAV --> 
   <nav id="mainNav"> 
    <div class="title">
-     Free Resume Maker 
+     Easy Resume Maker
    </div> <button class="hamburger" id="menuToggle">☰</button> 
    <ul id="menu"> 
     <li><a href="#">Help</a></li> 
@@ -161,20 +165,20 @@
       <input id="address" placeholder="Street, City, Country"> 
      </div> 
      <div class="form-group"> <label>Phone</label> 
-      <input id="phone" placeholder="(123) 456-7890"> 
+      <input id="phone" placeholder="+91 1234567890"> 
      </div> 
      <div class="form-group"> <label>Email</label> 
       <input id="email" placeholder="email@example.com"> 
      </div> 
      <div class="form-group"> <label>LinkedIn</label> 
-      <input id="linkedin" placeholder="linkedin.com/in/yourprofile"> 
+      <input id="linkedin" placeholder="linkedin.com/in/yourprofile (optional)"> 
      </div> 
      <div class="form-group"> <label>Twitter/Blog/Portfolio</label> 
-      <input id="twitter" placeholder="twitter.com/yourprofile"> 
+      <input id="twitter" placeholder="twitter.com/yourprofile (optional)"> 
      </div> 
      <div class="form-group" style="display:flex;justify-content:space-between;align-items:center;"> <label>Summary / Objective</label><button class="objective-btn" onclick="openObjectiveModal()">Select</button> 
      </div> 
-     <div class="form-group"> <textarea id="summary" rows="3" placeholder="Write a brief career objective or summary."></textarea> 
+     <div class="form-group"> <textarea id="summary" rows="3" placeholder="Write a brief career objective or summary/ select from above."></textarea> 
      </div> 
      <h3>Experience</h3> 
      <div id="experienceContainer"> 
@@ -185,7 +189,7 @@
        <div class="form-group"> <label>Job Title, Company</label> 
         <input class="exp-jobtitle" placeholder="Software Engineer, ABC Corp"> 
        </div> 
-       <div class="form-group"> <label>Details (Bullets)</label><textarea class="exp-bullets" rows="3" placeholder="• Built new features…"></textarea> 
+       <div class="form-group"> <label>Details (Bullets)</label><textarea class="exp-bullets" rows="3" placeholder="• Built new features.(optional)"></textarea> 
        </div> 
       </div> 
      </div> <button class="btn add-entry-btn" onclick="addExperienceEntry()">Add Experience</button> 
@@ -198,7 +202,7 @@
        <div class="form-group"> <label>Degree, School</label> 
         <input class="edu-degree" placeholder="B.S. in Computer Science, XYZ University"> 
        </div> 
-       <div class="form-group"> <label>Details (Bullets)</label><textarea class="edu-bullets" rows="2" placeholder="• Graduated with honours"></textarea> 
+       <div class="form-group"> <label>Details (Bullets)</label><textarea class="edu-bullets" rows="2" placeholder="• Graduated with honours.(optional)"></textarea> 
        </div> 
       </div> 
      </div> <button class="btn add-entry-btn" onclick="addEducationEntry()">Add Education</button> 
@@ -206,28 +210,28 @@
      <div id="skillsContainer"> 
       <div class="dynamic-container skill-entry"> <button class="removeBtn" style="display:none" onclick="removeSkill(this)">Remove</button> 
        <div class="form-group"> 
-        <input class="skill-input" placeholder="JavaScript"> 
+        <input class="skill-input" placeholder="JavaScript (click add skill to add more skills)"> 
        </div> 
       </div> 
      </div> <button class="btn add-entry-btn" onclick="addSkill()">Add Skill</button> 
      <h3>Activities</h3> 
-     <div class="form-group"> <textarea id="activitiesBullets" rows="2" placeholder="• Volunteered at…"></textarea> 
+     <div class="form-group"> <textarea id="activitiesBullets" rows="2" placeholder="• Volunteered at… (optional)"></textarea> 
      </div> 
-     <h3>Custom Section</h3> 
+     <h3>Custom Heading (Optional)</h3> 
      <div id="customContainer"> 
       <div class="dynamic-container custom-entry"> <button class="removeBtn" onclick="removeEntry(this,'custom')">Remove</button> 
-       <div class="form-group"> <label>Section Heading</label> 
-        <input class="custom-heading" placeholder="Your Section Heading"> 
+       <div class="form-group"> <label>Name The Heading</label> 
+        <input class="custom-heading" placeholder="Your Heading"> 
        </div> 
-       <div class="form-group"> <label>Section Content</label><textarea class="custom-content" rows="3" placeholder="Enter your content here…"></textarea> 
+       <div class="form-group"> <label> Your Details</label><textarea class="custom-content" rows="3" placeholder="Enter your Details here…"></textarea> 
        </div> 
       </div> 
-     </div> <button class="btn add-entry-btn" onclick="addCustomEntry()">Add Custom Section</button> 
+     </div> <button class="btn add-entry-btn" onclick="addCustomEntry()">Add Custom Heading</button> 
      <div class="btn-container"> <button class="clear-btn" onclick="clearForm()">Clear Data</button> <button class="btn" onclick="updateResume()">Update Preview</button> <button class="btn showPreviewBtn" onclick="togglePreview()">Show Preview</button> 
      </div> 
     </div> <!-- PREVIEW CONTAINER --> 
     <div class="preview-container"> 
-     <h2>Resume Preview</h2> <select id="sectionColor" class="color-picker" onchange="updateSectionColor(this.value)"> <option value="#f0f8ff">Pale Blue</option> <option value="#e3f2fd">Light Blue</option> <option value="#f0f4f8">Off White</option> <option value="#ffffff">White</option> </select> 
+     <h2>Resume Preview </h2> <select id="sectionColor" class="color-picker" onchange="updateSectionColor(this.value)"> <option value="#f0f8ff">Pale Blue</option> <option value="#e3f2fd">Light Blue</option> <option value="#f0f4f8">Off White</option> <option value="#ffffff">White</option> </select> 
      <div id="resumePreview" class="resume"> 
       <div class="resume-header"> 
        <h1 id="previewName">FIRST NAME LAST NAME</h1> 
@@ -252,7 +256,7 @@
       </div> 
      </div> <button class="btn" onclick="downloadPDF()">Download PDF</button> 
      <div id="downloadMsg">
-       Check Your Download 
+       Check Your Download Please.
      </div> 
     </div> 
    </div> 
