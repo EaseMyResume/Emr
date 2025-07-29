@@ -1,0 +1,18 @@
+    /*css for index.html*/
+
+    #helpnav {
+      color: white;
+      background: rgb(13, 134, 214);
+      display: flex;
+      justify-content: center;
+      padding: 0px;
+
+    }
+
+    ul {
+
+      list-style-type: none;
+      margin: 8px;
+      padding: 0px;
+
+    }
