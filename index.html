@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free Resume Maker, Make Your Professional Resume Easily With Our Form Based Interface.
+  No Data is Saved In Our Server.">
+  <meta name="keywords" content="Online Resume Maker,Professional Resume Maker,Resume Builder,Job Resume Maker,Resume Maker,
+  Free Online Resume Maker, ATS Resume Maker,Resume Template,Ease My Resume">
+  <title>Free Resume Maker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&amp;family=Lato:wght@300;400;700&amp;display=swap"
+    rel="stylesheet">
+  <!--CSS-->
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body> <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-text">
+      Welcomes You!
+    </div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+  </div> <!-- NAV -->
+  <nav id="mainNav">
+    <div class="title">
+      Easy Resume Maker
+    </div> <button class="hamburger" id="menuToggle">☰</button>
+    <ul id="menu">
+      <li><a href="help.html">Help</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <div class="nav-gap"></div> <!-- MAIN -->
+  <div class="main-wrapper">
+    <div class="container"> <!-- FORM CONTAINER -->
+      <div class="form-container">
+        <h2>Enter Your Resume Details</h2>
+        <div class="form-group"> <label>First Name</label>
+          <input id="firstName" placeholder="John">
+        </div>
+        <div class="form-group"> <label>Last Name</label>
+          <input id="lastName" placeholder="Doe">
+        </div>
+        <div class="form-group"> <label>Address</label>
+          <input id="address" placeholder="Street, City, Country">
+        </div>
+        <div class="form-group"> <label>Phone</label>
+          <input id="phone" placeholder="+91 1234567890">
+        </div>
+        <div class="form-group"> <label>Email</label>
+          <input id="email" placeholder="email@example.com">
+        </div>
+        <div class="form-group"> <label>LinkedIn</label>
+          <input id="linkedin" placeholder="linkedin.com/in/yourprofile (optional)">
+        </div>
+        <div class="form-group"> <label>Twitter/Blog/Portfolio</label>
+          <input id="twitter" placeholder="twitter.com/yourprofile (optional)">
+        </div>
+        <div class="form-group" style="display:flex;justify-content:space-between;align-items:center;"> <label>Summary /
+            Objective</label><button class="objective-btn" onclick="openObjectiveModal()">Select</button>
+        </div>
+        <div class="form-group"> <textarea id="summary" rows="3"
+            placeholder="Write a brief career objective or summary/ select from above."></textarea>
+        </div>
+        <h3>Experience</h3>
+        <div id="experienceContainer">
+          <div class="dynamic-container experience-entry"> <button class="removeBtn"
+              onclick="removeEntry(this,'experience')">Remove</button>
+            <div class="form-group"> <label>Dates (From – To)</label>
+              <input class="exp-dates" placeholder="January 2020 – Present">
+            </div>
+            <div class="form-group"> <label>Job Title, Company</label>
+              <input class="exp-jobtitle" placeholder="Software Engineer, ABC Corp">
+            </div>
+            <div class="form-group"> <label>Details (Bullets)</label><textarea class="exp-bullets" rows="3"
+                placeholder="• Built new features.(optional)"></textarea>
+            </div>
+          </div>
+        </div> <button class="btn add-entry-btn" onclick="addExperienceEntry()">Add Experience</button>
+        <h3>Education</h3>
+        <div id="educationContainer">
+          <div class="dynamic-container education-entry"> <button class="removeBtn"
+              onclick="removeEntry(this,'education')">Remove</button>
+            <div class="form-group"> <label>Dates/Month-Year</label>
+              <input class="edu-dates" placeholder="May 2019">
+            </div>
+            <div class="form-group"> <label>Degree, School</label>
+              <input class="edu-degree" placeholder="B.S. in Computer Science, XYZ University">
+            </div>
+            <div class="form-group"> <label>Details (Bullets)</label><textarea class="edu-bullets" rows="2"
+                placeholder="• Graduated with honours.(optional)"></textarea>
+            </div>
+          </div>
+        </div> <button class="btn add-entry-btn" onclick="addEducationEntry()">Add Education</button>
+        <h3>Skills</h3>
+        <div id="skillsContainer">
+          <div class="dynamic-container skill-entry"> <button class="removeBtn" style="display:none"
+              onclick="removeSkill(this)">Remove</button>
+            <div class="form-group">
+              <input class="skill-input" placeholder="JavaScript (click add skill to add more skills)">
+            </div>
+          </div>
+        </div> <button class="btn add-entry-btn" onclick="addSkill()">Add Skill</button>
+        <h3>Activities</h3>
+        <div class="form-group"> <textarea id="activitiesBullets" rows="2"
+            placeholder="• Volunteered at… (optional)"></textarea>
+        </div>
+        <h3>Custom Heading (Optional)</h3>
+        <div id="customContainer">
+          <div class="dynamic-container custom-entry"> <button class="removeBtn"
+              onclick="removeEntry(this,'custom')">Remove</button>
+            <div class="form-group"> <label>Name The Heading</label>
+              <input class="custom-heading" placeholder="Your Heading">
+            </div>
+            <div class="form-group"> <label> Your Details</label><textarea class="custom-content" rows="3"
+                placeholder="Enter your Details here…"></textarea>
+            </div>
+          </div>
+        </div> <button class="btn add-entry-btn" onclick="addCustomEntry()">Add Custom Heading</button>
+        <div class="btn-container"> <button class="clear-btn" onclick="clearForm()">Clear Data</button> <button
+            class="btn" onclick="updateResume()">Update Preview</button> <button class="btn showPreviewBtn"
+            onclick="togglePreview()">Show Preview</button>
+        </div>
+      </div> <!-- PREVIEW CONTAINER -->
+      <div class="preview-container">
+        <h2>Resume Preview </h2> <select id="sectionColor" class="color-picker"
+          onchange="updateSectionColor(this.value)">
+          <option value="#f0f8ff">Pale Blue</option>
+          <option value="#e3f2fd">Light Blue</option>
+          <option value="#f0f4f8">Off White</option>
+          <option value="#ffffff">White</option>
+        </select>
+        <div id="resumePreview" class="resume">
+          <div class="resume-header">
+            <h1 id="previewName">FIRST NAME LAST NAME</h1>
+            <div class="sub-info" id="previewAddressPhone">
+              Address • Phone
+            </div>
+            <div class="sub-info" id="previewEmailLinkedIn">
+              Email • LinkedIn • Twitter/Portfolio
+            </div>
+          </div>
+          <p class="resume-summary" id="previewSummary">Your summary/objective will appear here.</p>
+          <hr class="resume-divider">
+          <div id="previewExperienceSection"></div>
+          <div id="previewEducationSection"></div>
+          <div id="previewSkillsSection"></div>
+          <div id="previewActivitiesSection"></div>
+          <div id="previewCustomSection"></div>
+          <div id="previewDeclaration">
+            <h4>Declaration:</h4>
+            <p>I hereby declare that all the statements made in this resume are true, complete and correct to the best
+              of my knowledge.</p>
+            <p class="applicant-name">(YOUR NAME)</p>
+          </div>
+        </div> <button class="btn" onclick="downloadPDF()">Download PDF</button>
+        <div id="downloadMsg">
+          Check Your Download Please.
+        </div>
+      </div>
+    </div>
+  </div> <!-- OBJECTIVE MODAL -->
+  <div id="objectiveModal" class="modal">
+    <div class="modal-content"> <span class="close-btn" onclick="closeObjectiveModal()">×</span>
+      <h3>Select Career Objective</h3> <select id="objectiveSelect">
+        <option value="">-- Choose your field --</option>
+        <option value="fresher">Fresh Graduate</option>
+        <option value="software">Software Engineering</option>
+        <option value="management">Management</option>
+        <option value="customer">Customer Support</option>
+        <option value="marketing">Marketing</option>
+        <option value="finance">Finance</option>
+        <option value="healthcare">Healthcare</option>
+        <option value="education">Education</option>
+        <option value="creative">Creative Fields</option>
+        <option value="sales">Sales</option>
+        <option value="engineering">Engineering</option>
+      </select> <button class="btn" onclick="applyObjective()">Apply Objective</button>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    document.querySelector('.loader-progress').addEventListener('animationend', () => {
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('mainNav').style.display = 'flex';
+      updateRemoveButtons('experience');
+      updateRemoveButtons('education');
+      updateRemoveButtons('custom');
+      updateSkillButtons();
+    });
+    const menu = document.getElementById('menu'), toggleBtn = document.getElementById('menuToggle');
+    toggleBtn.addEventListener('click', e => { e.stopPropagation(); menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex'; });
+    document.addEventListener('click', () => menu.style.display = 'none');
+
+    const objectives = {
+      fresher: "Energetic and driven recent graduate with a solid foundation in industry-relevant knowledge seeking an opportunity to launch my career. Eager to learn, adapt, and contribute innovative solutions to a dynamic team.",
+      software: "As a passionate Software Engineer, I am committed to designing, developing, and deploying effective software solutions that drive business success through robust code, innovative technologies, and continuous learning.",
+      management: "Resourceful and results-driven management professional with proven leadership skills, strategic planning expertise, and a strong ability to drive organizational growth while fostering a collaborative team environment.",
+      customer: "Dedicated Customer Support Specialist focused on resolving client issues with empathy, clear communication, and timely follow-ups to enhance customer satisfaction and loyalty.",
+      marketing: "Innovative Marketing professional with a strong track record in developing data-driven campaigns, optimizing brand presence, and creating compelling content to achieve business objectives.",
+      finance: "Detail-oriented Financial Analyst with robust analytical skills, adept at interpreting complex financial data and providing actionable insights to support informed decision-making and drive sustainable growth.",
+      healthcare: "Compassionate Healthcare Professional committed to providing high-quality patient care, leveraging medical expertise, and operating effectively within fast-paced clinical environments.",
+      education: "Passionate Education Professional dedicated to fostering a positive learning environment, utilizing innovative teaching methodologies, and inspiring students to reach their full potential.",
+      creative: "Creative and dynamic professional with a flair for innovative design, storytelling, and content creation, dedicated to developing unique and engaging projects that resonate with target audiences.",
+      sales: "Goal-oriented Sales Executive with excellent communication and negotiation skills, dedicated to exceeding targets, building strong client relationships, and driving revenue growth.",
+      engineering: "Experienced Engineer with a proven track record in problem-solving, project management, and technical innovation, committed to delivering reliable and cutting-edge solutions in a competitive market."
+    };
+    function openObjectiveModal() { document.getElementById('objectiveModal').style.display = 'flex'; }
+    function closeObjectiveModal() { document.getElementById('objectiveModal').style.display = 'none'; }
+    function applyObjective() {
+      const val = document.getElementById('objectiveSelect').value;
+      if (objectives[val]) document.getElementById('summary').value = objectives[val];
+      else alert('Please select a valid field.');
+      closeObjectiveModal();
+    }
+    window.onclick = e => { if (e.target === document.getElementById('objectiveModal')) closeObjectiveModal(); };
+
+    function updateRemoveButtons(type) {
+      Array.from(document.getElementById(type + 'Container').getElementsByClassName(type + '-entry'))
+        .forEach((ent, i) => ent.querySelector('.removeBtn').style.display = i ? 'block' : 'none');
+    }
+    function cloneEntry(cid, cls) {
+      const c = document.getElementById(cid), tpl = c.querySelector('.' + cls), clone = tpl.cloneNode(true);
+      clone.querySelectorAll('input,textarea').forEach(x => x.value = '');
+      c.appendChild(clone);
+    }
+    function addExperienceEntry() { cloneEntry('experienceContainer', 'experience-entry'); updateRemoveButtons('experience'); }
+    function addEducationEntry() { cloneEntry('educationContainer', 'education-entry'); updateRemoveButtons('education'); }
+    function addCustomEntry() { cloneEntry('customContainer', 'custom-entry'); updateRemoveButtons('custom'); }
+    function removeEntry(btn, type) {
+      const arr = document.getElementById(type + 'Container').getElementsByClassName(type + '-entry');
+      if (arr.length > 1) { btn.parentElement.remove(); updateRemoveButtons(type); }
+      else alert('At least one entry is required.');
+    }
+    function updateSkillButtons() {
+      Array.from(document.getElementById('skillsContainer').getElementsByClassName('skill-entry'))
+        .forEach((ent, i) => ent.querySelector('.removeBtn').style.display = i ? 'block' : 'none');
+    }
+    function addSkill() { cloneEntry('skillsContainer', 'skill-entry'); updateSkillButtons(); }
+    function removeSkill(btn) {
+      const arr = document.getElementById('skillsContainer').getElementsByClassName('skill-entry');
+      if (arr.length > 1) { btn.parentElement.remove(); updateSkillButtons(); }
+      else alert('At least one skill is required.');
+    }
+    function processBullets(text) {
+      return text.split(/\r?\n/).map(line => { const t = line.replace(/^(\•|\-)\s*/, '').trim(); return t ? `<li>${t}</li>` : ''; }).join('');
+    }
+    function buildSection(cid, pid, title, dateCls, roleCls) {
+      const ents = [...document.getElementById(cid).getElementsByClassName(cid.replace('Container', '') + '-entry')], sec = document.getElementById(pid);
+      let html = '', has = false;
+      ents.forEach(ent => {
+        const d = ent.querySelector('.' + dateCls).value.trim(), r = ent.querySelector('.' + roleCls).value.trim(), b = ent.querySelector('textarea')?.value.trim() || '';
+        if (d || r || b) {
+          has = true; html += '<div class="resume-entry">';
+          if (d) html += `<p class="resume-subheading">${d}</p>`;
+          if (r) html += `<p class="resume-subheading">${r}</p>`;
+          if (b) { const L = processBullets(b); if (L) html += `<ul class="resume-bullets">${L}</ul>`; }
+          html += '</div>';
+        }
+      });
+      if (has) { sec.innerHTML = `<div class="resume-section-title">${title}</div>` + html; sec.style.display = 'block'; }
+      else sec.style.display = 'none';
+    }
+    function updateResume() {
+      const fn = document.getElementById('firstName').value.trim(), ln = document.getElementById('lastName').value.trim();
+      document.getElementById('previewName').innerText = fn || ln ? `${fn} ${ln}` : 'FIRST NAME LAST NAME';
+      const addr = document.getElementById('address').value.trim(), ph = document.getElementById('phone').value.trim();
+      document.getElementById('previewAddressPhone').innerText = addr || ph ? `${addr}${addr && ph ? ' • ' : ''}${ph}` : 'Address • Phone';
+      let combo = '', em = document.getElementById('email').value.trim(), lk = document.getElementById('linkedin').value.trim(), tw = document.getElementById('twitter').value.trim();
+      if (em) combo += em; if (lk) combo += (combo ? ' • ' : '') + lk; if (tw) combo += (combo ? ' • ' : '') + tw;
+      document.getElementById('previewEmailLinkedIn').innerText = combo || 'Email • LinkedIn • Twitter/Portfolio';
+      document.getElementById('previewSummary').innerText = document.getElementById('summary').value.trim() || 'Your summary/objective will appear here.';
+      buildSection('experienceContainer', 'previewExperienceSection', 'EXPERIENCE', 'exp-dates', 'exp-jobtitle');
+      buildSection('educationContainer', 'previewEducationSection', 'EDUCATION', 'edu-dates', 'edu-degree');
+      const skills = [...document.querySelectorAll('#skillsContainer .skill-input')].map(i => i.value.trim()).filter(v => v), skSec = document.getElementById('previewSkillsSection');
+      if (skills.length) { skSec.innerHTML = `<div class="resume-section-title">SKILLS</div><ul class="resume-bullets two-columns">${skills.map(s => `<li>${s}</li>`).join('')}</ul>`; skSec.style.display = 'block'; }
+      else skSec.style.display = 'none';
+      const acts = document.getElementById('activitiesBullets').value.trim(), aSec = document.getElementById('previewActivitiesSection');
+      if (acts) { aSec.innerHTML = `<div class="resume-section-title">ACTIVITIES</div><ul class="resume-bullets">${processBullets(acts)}</ul>`; aSec.style.display = 'block'; }
+      else aSec.style.display = 'none';
+      let customHTML = '';
+      document.querySelectorAll('#customContainer .custom-entry').forEach(ent => {
+        const hd = ent.querySelector('.custom-heading').value.trim(), ct = ent.querySelector('.custom-content').value.trim();
+        if (hd || ct) { customHTML += `<div class="resume-section-title">${hd.toUpperCase()}</div>`; if (ct) { const L = processBullets(ct); customHTML += L ? `<ul class="resume-bullets">${L}</ul>` : `<p style="font-size:1.1em">${ct}</p>`; } }
+      });
+      const cSec = document.getElementById('previewCustomSection');
+      if (customHTML) { cSec.innerHTML = customHTML; cSec.style.display = 'block'; } else cSec.style.display = 'none';
+      const decl = document.getElementById('previewDeclaration');
+      decl.querySelector('.applicant-name').innerText = `(${fn} ${ln})`; decl.style.display = 'block';
+    }
+    function downloadPDF() {
+      const resume = document.getElementById('resumePreview'), opts = { margin: [0.5, 0.5, 0.5, 0.5], filename: 'YourName_Resume.pdf', image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, scrollY: 0, useCORS: true, allowTaint: true }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } }, orig = resume.style.border;
+      resume.style.border = 'none'; html2pdf().set(opts).from(resume).save().then(() => resume.style.border = orig);
+      document.getElementById('downloadMsg').style.display = 'block'; setTimeout(() => document.getElementById('downloadMsg').style.display = 'none', 3000);
+    }
+    function togglePreview() {
+      updateResume();
+      const pc = document.querySelector('.preview-container'), btn = document.querySelector('.showPreviewBtn');
+      if (pc.style.display === 'block') { pc.style.display = 'none'; btn.innerText = 'Show Preview'; }
+      else { pc.style.display = 'block'; btn.innerText = 'Hide Preview'; }
+    }
+    function clearForm() {
+      ['firstName', 'lastName', 'address', 'phone', 'email', 'linkedin', 'twitter', 'summary', 'activitiesBullets'].forEach(id => document.getElementById(id).value = '');
+      ['experience', 'education', 'custom'].forEach(type => {
+        const c = document.getElementById(type + 'Container'); while (c.children.length > 1) c.removeChild(c.lastElementChild);
+        c.querySelectorAll('input,textarea').forEach(x => x.value = ''); updateRemoveButtons(type);
+      });
+      document.getElementById('skillsContainer').innerHTML = `<div class="dynamic-container skill-entry"><button class="removeBtn" style="display:none" onclick="removeSkill(this)">Remove</button><div class="form-group"><input class="skill-input" placeholder="JavaScript"></div></div>`;
+      updateSkillButtons();
+      document.getElementById('previewName').innerText = 'FIRST NAME LAST NAME';
+      document.getElementById('previewAddressPhone').innerText = 'Address • Phone';
+      document.getElementById('previewEmailLinkedIn').innerText = 'Email • LinkedIn • Twitter/Portfolio';
+      document.getElementById('previewSummary').innerText = 'Your summary/objective will appear here.';
+      ['previewExperienceSection', 'previewEducationSection', 'previewSkillsSection', 'previewActivitiesSection', 'previewCustomSection'].forEach(id => document.getElementById(id).style.display = 'none');
+      document.getElementById('previewDeclaration').style.display = 'none';
+    }
+    function updateSectionColor(color) {
+      document.querySelectorAll('.resume-section-title').forEach(title => {
+        title.style.backgroundColor = color;
+        title.style.border = color === '#ffffff' ? '1px solid #ccc' : 'none';
+      });
+    }
+  </script>
+
+</body>
+
+</html>
