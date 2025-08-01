@@ -1,0 +1,570 @@
+/*css for index.html*/
+
+/* RESET */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    background: #f0f4f8;
+    color: #333;
+}
+
+/* LOADER */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #0a0a2e, #000);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader-text {
+    font-family: 'Audiowide', cursive;
+    font-size: clamp(1rem, 10vw, 1.8rem);
+    letter-spacing: clamp(.2px, 2vw, 1px);
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: textEntrance 1s .3s forwards, neonPulse 1.5s 1.5s infinite;
+}
+
+.loader-bar {
+    width: 90%;
+    max-width: 240px;
+    height: 4px;
+    background: rgba(255, 255, 255, .1);
+    margin-top: 1rem;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.loader-progress {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    box-shadow: 0 0 20px rgba(0, 255, 255, .3);
+    animation: loadProgress 2.8s cubic-bezier(.4, 0, .2, 1) forwards;
+}
+
+@keyframes textEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.9);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes neonPulse {
+
+    0%,
+    100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.2);
+    }
+}
+
+@keyframes loadProgress {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+/* NAVIGATION */
+#mainNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #007bff;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+#mainNav .title {
+    font-family: 'Audiowide', cursive;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+#mainNav .hamburger {
+    font-size: 1.8rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#menu {
+    list-style: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    display: none;
+    flex-direction: column;
+}
+
+#menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+#menu li a:hover {
+    background: #f0f4f8;
+}
+
+.nav-gap {
+    height: 20px;
+    background: #007bff;
+}
+
+/* LAYOUT */
+.main-wrapper {
+    padding-top: 60px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 20px 20px;
+}
+
+.form-container,
+.preview-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    flex: 1 1 600px;
+    min-width: 500px;
+}
+
+@media (max-width: 767px) {
+
+    .form-container,
+    .preview-container {
+        flex: 1 1 100%;
+        min-width: auto;
+    }
+
+    .preview-container {
+        display: none;
+    }
+}
+
+/* FORM */
+h2 {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+h3 {
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border .3s, box-shadow .3s;
+}
+
+.form-group input:focus,
+textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, .3);
+    outline: none;
+}
+
+.dynamic-container {
+    position: relative;
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px dashed #aaa;
+    border-radius: 4px;
+}
+
+.dynamic-container:hover {
+    background: #f9f9f9;
+}
+
+.btn,
+.clear-btn {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn {
+    background: #007bff;
+    color: #fff;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+.clear-btn {
+    background: #c00;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.clear-btn:hover {
+    background: #a00;
+}
+
+.btn.add-entry-btn {
+    margin: 20px 0;
+}
+
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.objective-btn {
+    padding: 4px 10px;
+    font-size: .85rem;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: -5px;
+}
+
+.objective-btn:hover {
+    background: #0056b3;
+}
+
+.removeBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #c00;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.removeBtn:hover {
+    background: #900;
+}
+
+/* PREVIEW */
+.preview-container h2 {
+    font-family: 'Audiowide', cursive;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.resume {
+    background: #fff;
+    padding: 30px;
+    margin: auto;
+    max-width: 900px;
+    font-family: 'Times New Roman', serif;
+}
+
+.resume-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.resume-header h1 {
+    font-size: 2.2em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.resume-header .sub-info {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* SECTION BANNER (UNDERLINED & ITALIC) */
+.resume-section-title {
+    font-size: 1.5em;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 15px -30px 20px -30px;
+    padding: 4px 30px;
+    border: 1px solid #ccc;
+    background-color: #f0f8ff;
+    text-align: left;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+
+.resume-summary {
+    font-size: 1.3em;
+    margin: 0 -30px 5px -30px;
+    line-height: 1.4;
+    text-align: left;
+    display: inline-blocks;
+
+
+}
+
+/* DIVIDER (reduced gap above/below) */
+.resume-divider {
+    display: block;
+    width: calc(100% + 60px);
+    margin: 5px -30px 20px -30px;
+    border-top: 1px solid #333;
+}
+
+.resume-entry {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.resume-subheading {
+    margin: 5px 0;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* BULLETS */
+ul.resume-bullets {
+    list-style-type: disc;
+    list-style-position: outside;
+    margin: 0 0 10px;
+    padding-left: 15px;
+}
+
+ul.resume-bullets li {
+    margin-bottom: 5px;
+}
+
+/* SKILLS: two-column indent */
+ul.resume-bullets.two-columns {
+    column-count: 2;
+    column-gap: 1em;
+    padding-left: 35px;
+    margin-bottom: 20px;
+}
+
+/* ACTIVITIES & CUSTOM indent */
+#previewActivitiesSection ul.resume-bullets,
+#previewCustomSection ul.resume-bullets,
+#previewCustomSection p {
+    padding-left: 35px;
+}
+
+/* DECLARATION */
+#previewDeclaration {
+    display: none;
+    margin-top: 40px;
+    font-family: 'Times New Roman', serif;
+}
+
+#previewDeclaration h4 {
+    text-decoration: underline;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#previewDeclaration p {
+    margin-bottom: 5px;
+}
+
+#previewDeclaration .applicant-name {
+    text-align: right;
+    font-style: italic;
+}
+
+/* DOWNLOAD MSG */
+#downloadMsg {
+    color: #008000;
+    font-weight: 700;
+    margin-top: 10px;
+    display: none;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.close-btn {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-content select,
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.modal-content button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.modal-content button:hover {
+    background: #0056b3;
+}
+
+/* COLOR PICKER */
+.color-picker {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+}
+
+/* from here handles pdf print*/
+@media print {
+
+    /* Hide elements we DON'T want to print */
+    #mainNav,
+    .nav-gap,
+    .form-container,
+    .preview-container>h2,
+    .preview-container>.color-picker,
+    .preview-container>.btn,
+    .preview-container>#downloadMsg,
+    #objectiveModal {
+        display: none !important;
+    }
+
+    /* Reset layout for printing */
+    body,
+    html,
+    .main-wrapper,
+    .container {
+        all: initial;
+    }
+
+    .preview-container {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Define the page layout */
+    @page {
+        size: A4 portrait;
+        margin: 7mm;
+        /* Set browser page margins  */
+    }
+
+    /* Style the actual resume content for printing */
+    #resumePreview {
+        padding: 1cm;
+        /* Create our own margin with padding */
+        box-sizing: border-box;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        border: none;
+    }
+
+    /* Improve page break behavior to avoid awkward cuts */
+    .resume-section-title,
+    h1,
+    h2,
+    h3,
+    h4 {
+        page-break-after: avoid;
+    }
+
+    .resume-entry,
+    #previewDeclaration,
+    .resume-header {
+        page-break-inside: avoid;
+    }
+
+    /* Ensure background colors of section titles are printed */
+    .resume-section-title {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+}
