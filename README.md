@@ -1,1 +1,1 @@
-this is no login required website for easy resume making. no data shared and stored that is our promise.
+This is no login required website for easy resume making. NO DATA SHARED AND STORED, That is our Promise!
