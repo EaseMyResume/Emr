@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Daily Checklist</string>
+    <string name="widget_description">Minimal dark daily checklist that resets each day.</string>
+</resources>
